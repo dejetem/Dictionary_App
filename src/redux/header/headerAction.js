@@ -3,13 +3,13 @@ import {
   FETCH_HEADER_REQUEST,
   FETCH_HEADER_SUCCESS,
   FETCH_HEADER_FAILURE
-} from './headerTypes'
+} from './headerType'
 
 export const fetchSearch = (word) => {
   return (dispatch) => {
     dispatch(fetchSearchRequest())
     axios
-      .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word.textContent}`)
+      .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
       .then(response => {
         // response.data is the home
         const info = response.data

@@ -3,24 +3,30 @@ import {
   FETCH_HOMECARD_REQUEST,
   FETCH_HOMECARD_SUCCESS,
   FETCH_HOMECARD_FAILURE
-} from './homecardTypes'
+} from './homecardType'
 
 export const fetchHome = (word) => {
   return (dispatch) => {
     dispatch(fetchHomeRequest())
     axios
-      .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word.textContent}`)
+      .get('https://random-word-api.herokuapp.com/word?number=1')
       .then(response => {
-        // response.data is the home
-        const info = response.data
-        dispatch(fetchHomeSuccess(info))
+        word = response.data
+        console.log(word)
+        axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+        .then(response => {
+        // response.data is the users
+        const input = response.data
+        dispatch(fetchHomeSuccess(input))
+      })
       })
       .catch(error => {
-        // error.message is the error message
+       // error.message is the error message
         dispatch(fetchHomeFailure(error.message))
       })
   }
 }
+
 
 export const fetchHomeRequest = () => {
   return {
