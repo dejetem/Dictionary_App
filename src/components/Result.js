@@ -1,46 +1,21 @@
-import React, {useEffect, useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { fetchHome } from '../redux/homecard/homecardAction'
-import { fetchSearch } from '../redux/header/headerAction'
-import { FcSearch , FcHome} from 'react-icons/fc'
-import './HomeCard.css'
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import ReactAudioPlayer from 'react-audio-player';
-import {
-  Link,
-  useNavigate
-} from "react-router-dom";
 
-const HomeCard = ({props}) => {
-  const [search,setSearch] = useState([])
-  const dispatch = useDispatch();
-  const homeState = useSelector((state) => state.homecard.datas);
-  console.log(homeState[0]);
-  const navigate = useNavigate();
-  
-   const fetchData = () => {
-    dispatch(fetchHome());
-  };
 
-   useEffect(() => {
-    fetchData();
-  },[])
+const Result = (props) => {
+  const headerState = useSelector((state) => state.header.datas);
+  console.log(headerState[0]);
 
-  
 
-  /*const onClick = () => {
-    dispatch(fetchSearch(search));
-    navigate('/search')
-  }
-  const onKeyPress = (keyPressEvent) => keyPressEvent.key === 'Enter' && onClick()*/
 
 const card = (
   <React.Fragment>
-    {homeState.map(home =>
+    {headerState.map(home =>
       <CardContent>
         <Typography variant="h5" color="text.secondary" gutterBottom>
           Word Dictionary
@@ -103,10 +78,10 @@ const card = (
 
   return (
     <div>
-     {homeState.loading ? (
+     {headerState.loading ? (
         <h2>Loading</h2>
-      ) : homeState.error ? (
-        <h2>{homeState.error}</h2>
+      ) : headerState.error ? (
+        <h2>{headerState.error}</h2>
       ) : (
         <Box sx={{ minWidth: 275 }}>
           <Card variant="outlined">{card}</Card>
@@ -116,4 +91,4 @@ const card = (
   );
 };
 
-export default HomeCard;
+export default Result;

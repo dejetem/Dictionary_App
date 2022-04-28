@@ -1,0 +1,40 @@
+#search_wrapper {
+    display: flex;
+    width: 100%;
+    background-color: #0099ff;
+    height: 4rem;
+    border: 1px solid none;
+    border-radius: 5px;
+}
+
+
+#search_wrapper input, #search_wrapper input:focus-visible{
+    width: 200px;
+    padding: 10px;
+    height: 16px;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+}
+
+#search_button {
+    cursor: pointer;
+    font-size: 27px;
+    margin-left:14rem;
+    margin-top: -2.3rem;
+    border-radius: 2px;
+    border: 1px solid white;
+    background: white;
+}
+
+#search_wrapper2{
+    margin-top: 10px;
+    margin-left: 60rem;
+}
+
+#home{
+    font-size: 27px; 
+    margin-top: 1rem;
+    margin-left:3rem;
+}
+

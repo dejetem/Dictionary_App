@@ -2,6 +2,12 @@ import { Provider } from 'react-redux'
 import store from './redux/store'
 import './App.css';
 import HomeCard from "./components/HomeCard"
+import Result from "./components/Result"
+import Header from "./components/Header"
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
 
 
 function App() {
@@ -49,7 +55,11 @@ balls.forEach((el, i, ra) => {
   return (
     <Provider store={store}>
       <div className="App">
-        <HomeCard />
+       <Header />
+        <Routes>
+          <Route path="/" element={<HomeCard />} />
+          <Route path="/search" element={<Result />} />
+        </Routes>
       </div>
     </Provider>
   );
